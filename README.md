@@ -1,27 +1,27 @@
-# AppsFlyer MCP server — through HeyMetra
+<div align="center">
 
-> **Unofficial.** This is not AppsFlyer's own MCP server and this repository is not affiliated with, endorsed by or supported by AppsFlyer. It documents how [HeyMetra](https://heymetra.com/), a remote MCP server built by Zeisoft, reads AppsFlyer.
+<img src="assets/cover.png" alt="AppsFlyer through HeyMetra's MCP server" width="100%">
+
+# AppsFlyer &times; HeyMetra
 
 **Installs, cost and revenue by media source and campaign.**
+
+Your subscription revenue lives in AppsFlyer. What you paid to get those subscribers does not. Ask about both in the same sentence.
 
 [![MCP Registry](https://img.shields.io/badge/MCP_Registry-com.heymetra%2Fheymetra-1f6feb)](https://registry.modelcontextprotocol.io/v0/servers/com.heymetra%2Fheymetra/versions)
 [![Transport](https://img.shields.io/badge/transport-Streamable_HTTP-444)](https://modelcontextprotocol.io/)
 [![Auth](https://img.shields.io/badge/auth-OAuth_2.1-444)](https://heymetra.com/security/)
 [![Connector page](https://img.shields.io/badge/heymetra.com-appsflyer-1f6feb)](https://heymetra.com/connectors/appsflyer/)
 
+```
+https://mcp.heymetra.com/mcp
+```
+
+</div>
+
 ---
 
-## What AppsFlyer is
-
-AppsFlyer is the mobile attribution and marketing analytics platform that ties installs, in-app events, and revenue back to the media that drove them. It’s the source of truth for mobile ROI and channel performance.
-
-## What HeyMetra reads from AppsFlyer
-
-One connection is one app. Your MCP client gets a tool that returns installs, cost, revenue, clicks and impressions for a period, grouped by day, media source, campaign, channel, country or app — at most 31 days per call. Figures AppsFlyer marks as not reported come back labelled as such instead of being summed into a total that looks complete. Read-only: no tool changes your AppsFlyer account.
-
-## What you can ask
-
-Once connected, in your own assistant, in plain language:
+## Ask it things like
 
 > Which media sources drove the most installs last month?
 
@@ -31,29 +31,7 @@ Once connected, in your own assistant, in plain language:
 
 > How did installs and cost move day by day this month?
 
-## Permissions
-
-You switch these on per connection, and a permission you leave off is a tool your assistant never sees.
-
-| Permission | What it covers | Changes anything? |
-|---|---|---|
-| **Attribution** | Read installs, media sources and campaigns — by day, source, campaign, channel or country, over time, for acquisition or re-engagement, and as cohorts followed forwards — 31 days a report. A longer question is refused rather than answered with a fortnight's figures.; AppsFlyer allows 120 reports a day for the account and 24 per app, and that allowance is SHARED with the export page in the AppsFlyer dashboard — reports pulled here are reports you cannot download there that day.; Re-engagement and acquisition count different people. A re-engagement figure is not part of an install figure, and the same person can appear in both.; A cohort follows the people who ARRIVED in a period forwards, so it never adds up to that period's own installs or revenue.; Apple's SKAdNetwork figures for iOS are a second count of the same campaigns, not a part of the first: they cover every device rather than only those that allowed tracking, and adding the two counts an install twice.; A SKAdNetwork postback arrives at least a day after the install and version 4 sends two more later still, so the last few days are always still filling in.. | No, read only |
-| **Spend and revenue** | Read cost, revenue and ROI — Cost is whatever the media source chose to report, and most report nothing. An absent cost is unknown, not zero — so ROI and cost-per-install are withheld rather than computed from a gap.; AppsFlyer does not state a currency anywhere in its reports. Unless one was entered when connecting, the amounts are in the app account's own currency and nothing here can say which.; Revenue is GROSS — what the buyer paid, before the store's cut and tax. The rates AppsFlyer deducts can be read, but no net figure is computed from them: that needs the country of each purchase and the reports do not carry one.. | No, read only |
-| **Individual events** | Read the events one row each — installs, in-app events, clicks, impressions, uninstalls, reinstalls and ad revenue — rather than counts of them — The rows carry the people. AppsFlyer's raw columns include device identifiers, the advertising id, the IP address and the device model of an app's users.; Ninety days. AppsFlyer deletes raw data past that and no request reaches it; the aggregate reports go further back.; Twenty-four pulls a day per report type, and that allowance is SHARED with the export page in the AppsFlyer dashboard — raw data read here is raw data you cannot download there that day.; Real time, so the same question asked twice can return different rows.. | No, read only |
-
-<details>
-<summary>What each permission lets an assistant do, in full</summary>
-
-- Read how the people who first arrived in a period went on to behave — their retention, revenue and cost per install, grouped by media source.
-- Reads installs by day, media source, campaign, channel or country — and, while the spend permission is on, the cost, revenue and return beside them.
-- Read the iOS figures Apple reported through SKAdNetwork — a separate count from AppsFlyer's own, never added to it.
-- Read the store commission and tax rates AppsFlyer deducts to work out net revenue. The rules only — no figure is computed from them.
-- Read the individual events one row each — installs, in-app events, clicks and the rest. These rows carry your users' device identifiers and IP addresses.
-</details>
-
-## What it can change
-
-- AppsFlyer is a read-only source — HeyMetra reads it to answer questions and never changes the account.
+No dashboard, no export, no query language. You ask in the assistant you already use and the answer comes back with the account it came from.
 
 ## Connect AppsFlyer
 
@@ -192,6 +170,28 @@ _The key is serverUrl, not url — the one every other JSON client spells differ
 Full walkthrough: [heymetra.com/mcp/antigravity/](https://heymetra.com/mcp/antigravity/)
 </details>
 
+## What it may and may not touch
+
+AppsFlyer is a read-only source — HeyMetra reads it to answer questions and never changes the account.
+
+Permissions are switched on per connection, and one you leave off is a tool your assistant never sees.
+
+| Permission | What it covers | Changes anything? |
+|---|---|---|
+| **Attribution** | Read installs, media sources and campaigns — by day, source, campaign, channel or country, over time, for acquisition or re-engagement, and as cohorts followed forwards — 31 days a report. A longer question is refused rather than answered with a fortnight's figures.; AppsFlyer allows 120 reports a day for the account and 24 per app, and that allowance is SHARED with the export page in the AppsFlyer dashboard — reports pulled here are reports you cannot download there that day.; Re-engagement and acquisition count different people. A re-engagement figure is not part of an install figure, and the same person can appear in both.; A cohort follows the people who ARRIVED in a period forwards, so it never adds up to that period's own installs or revenue.; Apple's SKAdNetwork figures for iOS are a second count of the same campaigns, not a part of the first: they cover every device rather than only those that allowed tracking, and adding the two counts an install twice.; A SKAdNetwork postback arrives at least a day after the install and version 4 sends two more later still, so the last few days are always still filling in.. | No, read only |
+| **Spend and revenue** | Read cost, revenue and ROI — Cost is whatever the media source chose to report, and most report nothing. An absent cost is unknown, not zero — so ROI and cost-per-install are withheld rather than computed from a gap.; AppsFlyer does not state a currency anywhere in its reports. Unless one was entered when connecting, the amounts are in the app account's own currency and nothing here can say which.; Revenue is GROSS — what the buyer paid, before the store's cut and tax. The rates AppsFlyer deducts can be read, but no net figure is computed from them: that needs the country of each purchase and the reports do not carry one.. | No, read only |
+| **Individual events** | Read the events one row each — installs, in-app events, clicks, impressions, uninstalls, reinstalls and ad revenue — rather than counts of them — The rows carry the people. AppsFlyer's raw columns include device identifiers, the advertising id, the IP address and the device model of an app's users.; Ninety days. AppsFlyer deletes raw data past that and no request reaches it; the aggregate reports go further back.; Twenty-four pulls a day per report type, and that allowance is SHARED with the export page in the AppsFlyer dashboard — raw data read here is raw data you cannot download there that day.; Real time, so the same question asked twice can return different rows.. | No, read only |
+
+<details>
+<summary>What each permission lets an assistant do, in full</summary>
+
+- Read how the people who first arrived in a period went on to behave — their retention, revenue and cost per install, grouped by media source.
+- Reads installs by day, media source, campaign, channel or country — and, while the spend permission is on, the cost, revenue and return beside them.
+- Read the iOS figures Apple reported through SKAdNetwork — a separate count from AppsFlyer's own, never added to it.
+- Read the store commission and tax rates AppsFlyer deducts to work out net revenue. The rules only — no figure is computed from them.
+- Read the individual events one row each — installs, in-app events, clicks and the rest. These rows carry your users' device identifiers and IP addresses.
+</details>
+
 ## When something goes wrong
 
 <details>
@@ -239,9 +239,19 @@ Full walkthrough: [heymetra.com/mcp/antigravity/](https://heymetra.com/mcp/antig
 
 </details>
 
-## Everything else HeyMetra reads
+## What HeyMetra reads from AppsFlyer
 
-One connection answers across accounts — which is the point, because spend lives in one place and revenue in another:
+One connection is one app. Your MCP client gets a tool that returns installs, cost, revenue, clicks and impressions for a period, grouped by day, media source, campaign, channel, country or app — at most 31 days per call. Figures AppsFlyer marks as not reported come back labelled as such instead of being summed into a total that looks complete. Read-only: no tool changes your AppsFlyer account.
+
+<details>
+<summary>About AppsFlyer</summary>
+
+AppsFlyer is the mobile attribution and marketing analytics platform that ties installs, in-app events, and revenue back to the media that drove them. It’s the source of truth for mobile ROI and channel performance.
+</details>
+
+## One connection, not seven
+
+The reason to read AppsFlyer through HeyMetra rather than through a server that only knows AppsFlyer is everything else it can answer in the same breath:
 
 **Ads** — [Google Ads](https://heymetra.com/connectors/google-ads/) · [Meta](https://heymetra.com/connectors/meta-ads/)
 
@@ -255,17 +265,17 @@ One connection answers across accounts — which is the point, because spend liv
 
 **Channels** — [Slack](https://github.com/zeisoft/slack-mcp) · [Telegram](https://github.com/zeisoft/telegram-mcp)
 
-The full catalogue, with what each one can do today, is at [heymetra.com/connectors/](https://heymetra.com/connectors/).
+The full catalogue is at [heymetra.com/connectors/](https://heymetra.com/connectors/).
 
 ## Links
 
-- [AppsFlyer connector page](https://heymetra.com/connectors/appsflyer/) — the source this page is generated from
+- [AppsFlyer connector page](https://heymetra.com/connectors/appsflyer/)
 - [HeyMetra](https://heymetra.com/) — what the product is
-- [Setup per assistant](https://heymetra.com/mcp/) — eight clients, step by step
+- [Setup for every assistant](https://heymetra.com/mcp/)
 - [Security and limits](https://heymetra.com/security/)
-- [Pricing](https://heymetra.com/pricing/) — paid, no free plan and no trial
+- [Pricing](https://heymetra.com/pricing/)
 - [HeyMetra's own repository](https://github.com/zeisoft/heymetra-mcp)
 
 ---
 
-<sub>This README is generated from HeyMetra's live connector catalogue and refreshed daily; it is committed only when something in it actually changed. Corrections are welcome as issues. Built by <a href="https://zeisoft.com">Zeisoft</a>.</sub>
+<sub>Built by <a href="https://zeisoft.com">Zeisoft</a>, who make HeyMetra. Not affiliated with AppsFlyer. This README is generated from HeyMetra's live connector catalogue and refreshed daily; corrections are welcome as issues.</sub>
