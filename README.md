@@ -248,7 +248,7 @@ Anything that would change something comes back as a proposal you approve, insid
 
 ## What HeyMetra reads from AppsFlyer
 
-One connection is one app. Your MCP client gets a tool that returns installs, cost, revenue, clicks and impressions for a period, grouped by day, media source, campaign, channel, country or app — at most 31 days per call. Figures AppsFlyer marks as not reported come back labelled as such instead of being summed into a total that looks complete. Read-only: no tool changes your AppsFlyer account.
+One connection is one app. Your MCP client gets one tool that composes AppsFlyer's reports: installs, cost, revenue, clicks and impressions for a period, grouped by day, media source, campaign, channel, country or app — at most 31 days per call. Figures AppsFlyer marks as not reported come back labelled as such instead of being summed into a total that looks complete. An AppsFlyer token cannot be split into a read half and a write half, so HeyMetra asks you at connect time whether this connection may change anything; a change it is allowed to make still comes back as a proposal and waits for your approval.
 
 <details>
 <summary>About AppsFlyer</summary>
@@ -262,13 +262,15 @@ The reason to read AppsFlyer through HeyMetra rather than through a server that 
 
 **Ads** — [Google Ads](https://heymetra.com/connectors/google-ads/) · [Meta](https://heymetra.com/connectors/meta-ads/)
 
-**Analytics** — [Google Analytics 4](https://heymetra.com/connectors/google-analytics-4/) · [Google Search Console](https://github.com/zeisoft/google-search-console-mcp)
+**Analytics** — [Google Analytics 4](https://heymetra.com/connectors/google-analytics-4/) · [Google Search Console](https://github.com/zeisoft/google-search-console-mcp) · [PostHog](https://github.com/zeisoft/posthog-mcp)
 
 **Ecommerce** — [Shopify](https://heymetra.com/connectors/shopify/) · [Trendyol](https://github.com/zeisoft/trendyol-mcp) · [WooCommerce](https://github.com/zeisoft/woocommerce-mcp)
 
 **Revenue & CRM** — [Stripe](https://heymetra.com/connectors/stripe/) · [HubSpot](https://heymetra.com/connectors/hubspot/) · [Zoho CRM](https://github.com/zeisoft/zoho-crm-mcp) · [Zoho SalesIQ](https://github.com/zeisoft/zoho-salesiq-mcp) · [Zoho Marketing Automation](https://github.com/zeisoft/zoho-marketing-automation-mcp)
 
 **Mobile** — **AppsFlyer** · [RevenueCat](https://heymetra.com/connectors/revenuecat/) · [Adapty](https://github.com/zeisoft/adapty-mcp) · [App Store Connect](https://github.com/zeisoft/app-store-connect-mcp)
+
+**Work** — [Google Calendar](https://heymetra.com/connectors/google-calendar/) · [Google Meet](https://heymetra.com/connectors/google-meet/) · [Jira](https://github.com/zeisoft/jira-mcp)
 
 **Channels** — [Slack](https://github.com/zeisoft/slack-mcp) · [Telegram](https://github.com/zeisoft/telegram-mcp)
 
