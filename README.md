@@ -43,13 +43,13 @@ Sign in to AppsFlyer, open the account menu at the top right and choose Security
 
 **2. Create a token of type API**
 
-The screen offers more than one kind. Choose API. Copy the value in full — it is a JWT and runs past seven hundred characters, so select all of it rather than what fits in the box.
+The screen offers more than one kind. Choose API. Copy the value in full: it runs past seven hundred characters, so select all of it rather than what fits in the box.
 
 > AppsFlyer revoked every token issued before 10 March 2026. An older one that has been sitting in a password manager will fail, and the failure looks like a permission problem rather than an expiry.
 
 **3. Find the app ID**
 
-On Android it is the package name, exactly as the Play Store shows it — com.example.app. On iOS it is the letters id followed by the App Store number — id123456789.
+On Android it is the package name, exactly as the Play Store shows it, such as com.example.app. On iOS it is the letters id followed by the App Store number, such as id123456789.
 
 > One connection is one app. AppsFlyer publishes no way to ask a token which apps it may report on, so a second app is a second connection.
 
@@ -63,7 +63,7 @@ Optional, and worth doing. AppsFlyer publishes no currency anywhere in its repor
 
 **6. Add HeyMetra to the assistant you use**
 
-Claude, ChatGPT, Cursor or Codex — HeyMetra gives you the address and the key to paste. The AppsFlyer tools appear there.
+Claude, ChatGPT, Cursor or Codex. HeyMetra gives you the address and the key to paste, and AppsFlyer answers there.
 
 ## Then add HeyMetra to your assistant
 
@@ -98,7 +98,7 @@ Full walkthrough: [heymetra.com/mcp/claude/](https://heymetra.com/mcp/claude/)
 
 Paste the address above into Settings → Security and login → Developer mode, then chatgpt.com/plugins.
 
-_The endpoint has to include its /mcp path here._
+_The address has to end in /mcp here._
 
 Full walkthrough: [heymetra.com/mcp/chatgpt/](https://heymetra.com/mcp/chatgpt/)
 </details>
@@ -159,7 +159,7 @@ Full walkthrough: [heymetra.com/mcp/codex/](https://heymetra.com/mcp/codex/)
 }
 ```
 
-_Leave the static OAuth fields empty — they exist for servers that cannot register themselves._
+_Leave the static OAuth fields empty; HeyMetra does not need them._
 
 Full walkthrough: [heymetra.com/mcp/cursor/](https://heymetra.com/mcp/cursor/)
 </details>
@@ -175,26 +175,26 @@ Full walkthrough: [heymetra.com/mcp/cursor/](https://heymetra.com/mcp/cursor/)
 }
 ```
 
-_The key is serverUrl, not url — the one every other JSON client spells differently._
+_The key is serverUrl, not url, unlike every other JSON client._
 
 Full walkthrough: [heymetra.com/mcp/antigravity/](https://heymetra.com/mcp/antigravity/)
 </details>
 
 ## What it may and may not touch
 
-Propose a change through this account's own API, for operations HeyMetra does not cover. Nothing is sent until you approve it, and HeyMetra cannot undo it afterwards.
+Propose a change to this account. Nothing is sent until you approve it, and HeyMetra cannot undo it afterwards.
 
 Permissions are switched on per connection, and one you leave off is a tool your assistant never sees.
 
 | Permission | What it covers | Changes anything? |
 |---|---|---|
-| **Direct API access** | Let your assistant use this account's own API for anything HeyMetra's other operations do not cover. It reads directly, and what comes back is the provider's own answer rather than a figure HeyMetra has checked. It can also propose changes — those are never applied until you approve them, and HeyMetra cannot undo one afterwards — 31 days a report. A longer question is refused rather than answered with a fortnight's figures.; AppsFlyer allows 120 reports a day for the account and 24 per app, and that allowance is SHARED with the export page in the AppsFlyer dashboard — reports pulled here are reports you cannot download there that day.; Re-engagement and acquisition count different people. A re-engagement figure is not part of an install figure, and the same person can appear in both.; A cohort follows the people who ARRIVED in a period forwards, so it never adds up to that period's own installs or revenue.; Apple's SKAdNetwork figures for iOS are a second count of the same campaigns, not a part of the first: they cover every device rather than only those that allowed tracking, and adding the two counts an install twice.; A SKAdNetwork postback arrives at least a day after the install and version 4 sends two more later still, so the last few days are always still filling in.; Cost is whatever the media source chose to report, and most report nothing. An absent cost is unknown, not zero — so ROI and cost-per-install are withheld rather than computed from a gap.; AppsFlyer does not state a currency anywhere in its reports. Unless one was entered when connecting, the amounts are in the app account's own currency and nothing here can say which.; Revenue is GROSS — what the buyer paid, before the store's cut and tax. The rates AppsFlyer deducts can be read, but no net figure is computed from them: that needs the country of each purchase and the reports do not carry one.; The rows carry the people. AppsFlyer's raw columns include device identifiers, the advertising id, the IP address and the device model of an app's users.; Ninety days. AppsFlyer deletes raw data past that and no request reaches it; the aggregate reports go further back.; Twenty-four pulls a day per report type, and that allowance is SHARED with the export page in the AppsFlyer dashboard — raw data read here is raw data you cannot download there that day.; Real time, so the same question asked twice can return different rows.. | Yes — every change waits for your approval |
+| **Full account access** | Lets your assistant read anything in this account to answer your questions. The figures are the provider's own, not ones HeyMetra has checked. It can also propose changes: none is applied until you approve it, and HeyMetra cannot undo one afterwards — 31 days a report. A longer question is refused rather than answered with a fortnight's figures.; AppsFlyer allows 120 reports a day for the account and 24 per app, and that allowance is SHARED with the export page in the AppsFlyer dashboard. Reports pulled here are reports you cannot download there that day.; Re-engagement and acquisition count different people. A re-engagement figure is not part of an install figure, and the same person can appear in both.; A cohort follows the people who ARRIVED in a period forwards, so it never adds up to that period's own installs or revenue.; Apple's SKAdNetwork figures for iOS are a second count of the same campaigns, not a part of the first: they cover every device rather than only those that allowed tracking, and adding the two counts an install twice.; A SKAdNetwork postback arrives at least a day after the install and version 4 sends two more later still, so the last few days are always still filling in.; Cost is whatever the media source chose to report, and most report nothing. An absent cost is unknown, not zero, so ROI and cost-per-install are withheld rather than computed from a gap.; AppsFlyer does not state a currency anywhere in its reports. Unless one was entered when connecting, the amounts are in the app account's own currency and nothing here can say which.; Revenue is GROSS: what the buyer paid, before the store's cut and tax. The rates AppsFlyer deducts can be read, but no net figure is computed from them, because that needs the country of each purchase and the reports do not carry one.; The rows carry the people. AppsFlyer's raw columns include device identifiers, the advertising id, the IP address and the device model of an app's users.; Ninety days. AppsFlyer deletes raw data past that and no request reaches it; the aggregate reports go further back.; Twenty-four pulls a day per report type, and that allowance is SHARED with the export page in the AppsFlyer dashboard. Raw data read here is raw data you cannot download there that day.; Real time, so the same question asked twice can return different rows.. | Yes — every change waits for your approval |
 
 <details>
 <summary>What each permission lets an assistant do, in full</summary>
 
-- Ask this account's own API a question HeyMetra's other operations do not cover. Reads only, and the answer is the provider's own rather than a figure HeyMetra has checked.
-- Propose a change through this account's own API, for operations HeyMetra does not cover. Nothing is sent until you approve it, and HeyMetra cannot undo it afterwards.
+- Ask anything about this account and get the answer from its live data. Reads only, and the figures are the provider's own rather than ones HeyMetra has checked.
+- Propose a change to this account. Nothing is sent until you approve it, and HeyMetra cannot undo it afterwards.
 </details>
 
 Anything that would change something comes back as a proposal you approve, inside bounds that live in code rather than in a prompt: ±50% on a budget, 5 campaigns per action and 20 changes a rolling day, and an approval that expires after 30 minutes. [How that works](https://heymetra.com/security/).
@@ -211,7 +211,7 @@ Anything that would change something comes back as a proposal you approve, insid
 </details>
 
 <details>
-<summary>Saving fails although AppsFlyer clearly knows the app — the app ID is right and the token is new.</summary>
+<summary>Saving fails although AppsFlyer clearly knows the app: the app ID is right and the token is new.</summary>
 
 **Why:** Reporting through the Pull API is part of the AppsFlyer plan rather than a setting on the token. An account without it can list its apps and cannot read a single daily figure.
 
@@ -233,7 +233,7 @@ Anything that would change something comes back as a proposal you approve, insid
 
 **Why:** The report allowance is shared. AppsFlyer permits 120 reports a day per account and 24 per app, counted across the API and the dashboard's own export page together.
 
-**Fix:** The allowance resets at 00:00 UTC. HeyMetra caches answers and says in each one that the allowance is shared, so an assistant exploring costs you less than the same questions asked by hand — but it is one budget, not two.
+**Fix:** The allowance resets at 00:00 UTC. HeyMetra reuses a recent answer where it can, so exploring through your assistant uses less of it than the same questions asked by hand. It is still one allowance, not two.
 
 </details>
 
@@ -248,7 +248,7 @@ Anything that would change something comes back as a proposal you approve, insid
 
 ## What HeyMetra reads from AppsFlyer
 
-One connection is one app. Your MCP client gets one tool that composes AppsFlyer's reports: installs, cost, revenue, clicks and impressions for a period, grouped by day, media source, campaign, channel, country or app — at most 31 days per call. Figures AppsFlyer marks as not reported come back labelled as such instead of being summed into a total that looks complete. An AppsFlyer token cannot be split into a read half and a write half, so HeyMetra asks you at connect time whether this connection may change anything; a change it is allowed to make still comes back as a proposal and waits for your approval.
+One connection is one app. Ask your assistant about installs, cost, revenue, clicks and impressions for a period, grouped by day, media source, campaign, channel, country or app, up to 31 days at a time. Figures AppsFlyer marks as not reported are labelled as such instead of being summed into a total that looks complete. When you connect, you choose whether your assistant may also propose changes: creating an imported audience, adding people to one or removing them, and a request to erase one user's data. Every change it proposes waits for your approval.
 
 <details>
 <summary>About AppsFlyer</summary>
