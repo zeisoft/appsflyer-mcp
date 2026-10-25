@@ -63,7 +63,7 @@ Optional, and worth doing. AppsFlyer publishes no currency anywhere in its repor
 
 **6. Add HeyMetra to the assistant you use**
 
-Claude, ChatGPT, Cursor or Codex. HeyMetra gives you the address and the key to paste, and AppsFlyer answers there.
+Claude, ChatGPT, Cursor or Codex. You paste one address and sign in once, and AppsFlyer answers there.
 
 ## Then add HeyMetra to your assistant
 
